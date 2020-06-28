@@ -8,8 +8,6 @@
 	}
 	//var_dump($names)
 ?>
-		<title>index</title>
-	</head>
 	<body>
 <?php if(count($result)> 0 ):?>
 		<form action = "landing_page.php" method ="get" >
