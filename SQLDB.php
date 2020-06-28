@@ -10,15 +10,34 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+
 function DB_getAll($conn){
+	$ret = [ ];
 	$query = 'select * from players'; 
 	$result = $conn->query($query);
+	$i = 0;
+	while($row = $result->fetch_assoc()) {
+		
+		$ret[$i]['id'] = $row["Id"];
+		$ret[$i]['Name'] = $row["Name"];
+		$ret[$i]['Strength'] = $row["Strength"];
+		$ret[$i]['Dexterity'] = $row["Dexterity"];
+		$ret[$i]['Constitution'] = $row["Constitution"];
+		$ret[$i]['Intelligence'] = $row["Intelligence"];
+		$ret[$i]['Wisdom'] = $row["Wisdom"];
+		$ret[$i]['Charisma'] = $row["Charisma"];
+		$ret[$i]['HP'] = $row["HP"];
+		$ret[$i]['AP'] = $row["AP"];
+		$i++;
+    }
+	return $ret;
 }
 function DB_update($row, $newValue, $conditon){
 	$query = 'UPDATE table_name SET ? = ? were ?'; 
 	$stmt  = $conn->prepare($query);
 	$stmt->bind_param('sss',$row,$newValue,$conditon);
-	return $stmt->execute();
+	return mysqli_fetch_array($stmt->execute());
 }
 function DB_insert($arr,$conn){ 
 	if(!isset($arr[7])){
@@ -38,7 +57,7 @@ function DB_insert($arr,$conn){
 	$val6 = $arr[6];
 	$val7 = $arr[7];
 	/* Execute the statement */
-	return $stmt->execute();
+	return mysqli_fetch_array($stmt->execute());
 }
 $rows = ["Name","Strength","Dexterity","Constitution","Intelligence","Wisdom","Charisma","HP","AP"];
 ?>
