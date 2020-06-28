@@ -5,8 +5,9 @@
 		<?php 
 	include "SQLDB.php";
 	if(!empty($_POST)):
-		foreach($rows as $k){ 
-		var_dump($_POST[$k]);
+		$params = [];
+		foreach($rows as $k){
+			$params[] =$_POST[$k];
 		}
 	else:
 ?>
