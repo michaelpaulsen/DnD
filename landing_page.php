@@ -1,16 +1,9 @@
 <?php
-$player =  json_decode(file_get_contents('Players.Json'),true)[$_GET["player"]];
+include "head.php";
+$player = DB_getByName($_GET["player"],$conn);
 ?>
 	<body>
-		<h1> <?php echo $_GET["player"]?></h1>
 <?php 
-	foreach($player as $k => $v){
-?> 	
-	<p> 
-<?php echo($k) ?>
-		<input value= "<?php echo($v);?>" \>
-	</p>
-<?php }?>
 		<script>
 			$(document).ready(()=>{
 				console.log("ready");
