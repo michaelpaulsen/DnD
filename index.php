@@ -11,6 +11,7 @@
 		<title>index</title>
 	</head>
 	<body>
+<?php if(count($result)> 0 ):?>
 		<form action = "landing_page.php" method ="get" >
 			<select id="player" name = "player">
 <?php
@@ -24,5 +25,9 @@
 			</select>
 			<button value="submit">submit</button>
 		</form>
+<?php else:?>
+		<a href = "AddUser.php"> there's no users why not try to add one</a>
+
 		
-<?php include "footer.php";?>
+<?php endif;
+ include "footer.php";?>
