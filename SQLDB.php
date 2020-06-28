@@ -10,6 +10,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+function DB_update($row, $newValue, $conditon){
+	$query = 'UPDATE table_name SET ? = ? were ?'; 
+	$stmt  = $conn->prepare($query);
+	$stmt->bind_param('sss',$row,$newValue,$conditon);
+	return $stmt->execute();
+}
 function DB_insert($arr,$conn){ 
 	if(!isset($arr[7])){
 		echo "<p class = \"error\">not enough prams passed expected 8</p> <br/>";
