@@ -15,7 +15,7 @@
 <?php
 	foreach($rows as $r){ 
 ?>
-	<p> <?php echo $r ?> 
+	<p> <?php echo $r ?> : 
 	<input name ="<?php echo $r?>" type ="<?php 
 if($r != "Name"){ 
 	echo "number";
