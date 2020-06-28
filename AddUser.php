@@ -1,9 +1,8 @@
-<html>
-	<head>
-	</head>
+<?php
+	include "head.php";
+?>
 	<body>
 		<?php 
-	include "SQLDB.php";
 	if(!empty($_POST)):
 		$params = [];
 		foreach($rows as $k){
@@ -31,5 +30,10 @@ if($r != "Name"){
 			<button type=submit> submit</button>
 		</form>
 <?php endif?>
+		<script>
+		$(document).ready(()=>{
+			$("#Page_title").html("Add a User");
+		});
+		</script>
 	</body>
 </html>
