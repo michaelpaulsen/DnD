@@ -35,9 +35,7 @@ function DB_insert($arr,$conn){
 	$query = "INSERT into players (Name,Strength,Dexterity,Constitution,Intelligence,Wisdom,Charisma,HP,AP) VALUES(?,?,?,?,?,?,?,?,?)";
 	$stmt  = $conn->prepare($query);
 	$stmt->bind_param("siiiiiiii", $val0, $val1, $val2, $val3, $val4,$val5, $val6, $val7,$val7);
-	foreach($arr as $k){ 
-		var_dump($k);
-	}
+	
 	$val0 = $arr[0];
 	$val1 = $arr[1];
 	$val2 = $arr[2];
