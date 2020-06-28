@@ -9,6 +9,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+}
 function DB_insert($arr,$conn){ 
 	if(!isset($arr[7])){
 		echo "<p class = \"error\">not enough prams passed expected 8</p> <br/>";
