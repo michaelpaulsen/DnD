@@ -1,18 +1,28 @@
-
-<html>
-	<head>
+<?php
+	include "head.php";
+	$result = DB_getAll($conn);
+	//var_dump($result);
+	$names = [];
+	foreach($result as $k => $v){
+		$names[] =  $result[$k]["Name"];
+	}
+	//var_dump($names)
+?>
 		<title>index</title>
 	</head>
 	<body>
 		<form action = "landing_page.php" method ="get" >
 			<select id="player" name = "player">
-<?php 
-foreach( json_decode(file_get_contents('Players.Json')) as $name => $k){
-			echo ("<option value = \"{$name}\"> {$name} </option>");
-}
-?>'
+<?php
+	foreach($names as $k){
+?>
+				<option value = "<?php echo $k?>"><?php echo $k?></option>
+<?php
+	}
+?>
+
 			</select>
 			<button value="submit">submit</button>
 		</form>
-	</body>
-</html>
+		
+<?php include "footer.php";?>
