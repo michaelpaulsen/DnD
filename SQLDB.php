@@ -10,10 +10,9 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-function DB_getAll(){
+function DB_getAll($conn){
 	$query = 'select * from players'; 
-	$stmt  = $conn->prepare($query);
-	return $stmt->execute();
+	$result = $conn->query($query);
 }
 function DB_update($row, $newValue, $conditon){
 	$query = 'UPDATE table_name SET ? = ? were ?'; 
