@@ -33,6 +33,28 @@ function DB_getAll($conn){
     }
 	return $ret;
 }
+function DB_getByName($name, $conn){ 
+	
+	$ret = [ ];
+	$query = "select * from players where Name = \"{$name}\""; 
+	$result = $conn->query($query);
+	$i = 0;
+	while($row = $result->fetch_assoc()) {
+		
+		$ret[$i]['id'] = $row["Id"];
+		$ret[$i]['Name'] = $row["Name"];
+		$ret[$i]['Strength'] = $row["Strength"];
+		$ret[$i]['Dexterity'] = $row["Dexterity"];
+		$ret[$i]['Constitution'] = $row["Constitution"];
+		$ret[$i]['Intelligence'] = $row["Intelligence"];
+		$ret[$i]['Wisdom'] = $row["Wisdom"];
+		$ret[$i]['Charisma'] = $row["Charisma"];
+		$ret[$i]['HP'] = $row["HP"];
+		$ret[$i]['AP'] = $row["AP"];
+		$i++;
+    }
+	return $ret;
+}
 function DB_update($row, $newValue, $conditon){
 	$query = 'UPDATE table_name SET ? = ? were ?'; 
 	$stmt  = $conn->prepare($query);
