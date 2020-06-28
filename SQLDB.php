@@ -43,6 +43,7 @@ function DB_getByName($name, $conn){
 		
 		$ret[$i]['id'] = $row["Id"];
 		$ret[$i]['Name'] = $row["Name"];
+		$ret[$i]['Char_name'] = $row["Char_name"];
 		$ret[$i]['Strength'] = $row["Strength"];
 		$ret[$i]['Dexterity'] = $row["Dexterity"];
 		$ret[$i]['Constitution'] = $row["Constitution"];
@@ -79,7 +80,7 @@ function DB_insert($arr,$conn){
 	$val6 = $arr[6];
 	$val7 = $arr[7];
 	/* Execute the statement */
-	return mysqli_fetch_array($stmt->execute());
+	return ($stmt->execute());
 }
-$rows = ["Name","Strength","Dexterity","Constitution","Intelligence","Wisdom","Charisma","HP","AP"];
+$rows = ["Name","Char_name","Strength","Dexterity","Constitution","Intelligence","Wisdom","Charisma","HP","AP"];
 ?>
