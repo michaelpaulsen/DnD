@@ -1,6 +1,4 @@
-
-<html>
-	<head>
+<?php include "head.php"?>
 		<title>index</title>
 	</head>
 	<body>
@@ -17,5 +15,4 @@ foreach( json_decode(file_get_contents('Players.Json')) as $name => $k){
 			</select>
 			<button value="submit">submit</button>
 		</form>
-	</body>
-</html>
+<?php include "footer.php"?> 
