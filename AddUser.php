@@ -9,6 +9,7 @@
 		foreach($rows as $k){
 			$params[] =$_POST[$k];
 		}
+		DB_insert($params,$conn);
 	else:
 ?>
 		<form method = "POST">
