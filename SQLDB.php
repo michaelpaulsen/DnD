@@ -90,7 +90,7 @@ function DB_insert($arr,$conn){
 	$val5 = $arr[5];
 	$val6 = $arr[6];
 	$val7 = $arr[7];
-	$stmt->execute()
+	$stmt->execute();
 	/* Execute the statement */
 	return $stmt;
 }
