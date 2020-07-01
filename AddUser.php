@@ -9,6 +9,11 @@
 			$params[] =$_POST[$k];
 		}
 		DB_insert($params,$conn);
+?>
+	<script>
+	window.location.href = "/DnD";
+	</script>
+<?php
 	else:
 ?>
 		<form method = "POST">
