@@ -56,11 +56,22 @@ function DB_getByName($name, $conn){
     }
 	return $ret;
 }
-function DB_update($row, $newValue, $conditon){
-	$query = 'UPDATE table_name SET ? = ? were ?'; 
+function DB_update($arr, $conn){
+	$query = 'UPDATE players SET Name=?,Char_name=?,Strength=?,Dexterity=?,Constitution=?,Intelligence=?,Wisdom=?,Charisma=?,HP=?,AP=? WHERE Name = ?'; 
 	$stmt  = $conn->prepare($query);
-	$stmt->bind_param('sss',$row,$newValue,$conditon);
-	return mysqli_fetch_array($stmt->execute());
+	$stmt->bind_param('sssssssssss',$v1,$v2,$v3,$v4,$v5,$v6,$v7,$v8,$v9,$v10,$v1);
+	$v1  = $arr[0];
+	$v2  = $arr[1];
+	$v3  = $arr[2];
+	$v4  = $arr[3];
+	$v5  = $arr[4];
+	$v6  = $arr[5];
+	$v7  = $arr[6];
+	$v8  = $arr[7];
+	$v9  = $arr[8];
+	$v10 = $arr[9];
+	$stmt->execute();
+	return $stmt;
 }
 function DB_insert($arr,$conn){ 
 	if(!isset($arr[7])){

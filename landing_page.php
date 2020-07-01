@@ -22,9 +22,13 @@ $player = DB_getByName($_GET["player"],$conn);
 		<script>
 			$(document).ready(()=>{
 				console.log("ready");
+				let data = $("#form_main").serialize();
 				$("#Page_title").html("<?php echo $_GET["player"]?>'s player data");
-				
-				
+				$("#form_main").submit((e)=>{
+					console.log("test");
+					e.preventDefault();
+					$.ajax({ url:"Update.php",method: "GET",data:data});
+			});
 			});
 		</script>
 	</body>
