@@ -8,12 +8,26 @@ $player = DB_getByName($_GET["player"],$conn);
 <?php 
 	foreach($player as $k => $v ){ 
 		foreach($player[$k] as $kk => $vv){
-			if($kk != "id"){ 
-				$str = "<p class = \"".$kk."\">" . $kk .": <input  name = \"" .$kk."\" value =\"".$vv."\"";
-				$str .= $kk == "Name" ? ("type=\"text\""):("type=\"Number\"");
-				$str .= "/></p>";
-				echo($str);
-			}
+			if($kk != "id"): 
+?>
+			<p class = "<?php echo $kk;?>"> <?php echo $kk?> : <input name = "<?php echo $kk;?>" value = "
+<?php 
+	echo $vv;
+	
+?>
+" type = 
+<?php
+if($kk == "Name" || $kk == "Char_name"){
+	echo "text";
+}else{ 
+	echo "number"; 
+}
+
+?>
+/>
+</p>
+<?php
+			endif;
 		}	
 	}
 ?>
